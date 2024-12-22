@@ -19,7 +19,7 @@ internal readonly struct SegmentShape
         }
 
         var height = lines.Count;
-        var width = lines.Max(l => Segment.CellCount(l));
+        var width = lines.Select(Segment.CellCount).DefaultIfEmpty(0).Max();
 
         return new SegmentShape(width, height);
     }
